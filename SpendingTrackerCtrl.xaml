@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="FMS.SpendingTrackerCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="250" xmlns:my="clr-namespace:FMS" BorderThickness="0">
+    <UserControl.BorderBrush>
+        <SolidColorBrush />
+    </UserControl.BorderBrush>
+    <Grid>
+        <Image HorizontalAlignment="Stretch" Margin="0,91,0,27" Name="imgCylinder" Stretch="Fill" VerticalAlignment="Stretch" Width="200" Source="/FMS;component/SpentImages/cylinder_gauge_035.png" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="0,64,0,0" Name="tbxRemainigAmount" Text="30" VerticalAlignment="Top" Width="99" TextAlignment="Center"><TextBlock.Background><ImageBrush ImageSource="/FMS;component/SpentImages/cylinder_gauge_100.png" /></TextBlock.Background><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground></TextBlock>
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,64,0,0" Name="tbxSpentAmount" Text="70" VerticalAlignment="Top" Width="95" TextAlignment="Center"><TextBlock.Background><ImageBrush ImageSource="/FMS;component/SpentImages/cylinder_gauge_000.png" /></TextBlock.Background><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground></TextBlock>
+        <TextBlock Height="23" HorizontalAlignment="Stretch" Name="tbxTotalAllocation" Text="100" TextAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,36,0,0"><TextBlock.Background><ImageBrush ImageSource="/FMS;component/SpentImages/cylinder_gauge_100.png" /></TextBlock.Background><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground></TextBlock>
+        <Image Height="27" HorizontalAlignment="Stretch" Margin="102,4,102,0" Name="imgCategory" Stretch="Fill" VerticalAlignment="Top" Width="44" Source="/FMS;component/SpentImages/HomeCategory.png" FlowDirection="RightToLeft" />
+        <my:FMSImageButton HorizontalAlignment="Stretch" Margin="0,177,0,0" x:Name="fmsSettings" VerticalAlignment="Bottom" BorderThickness="1" Image="/FMS;component/UI_RES/more-details.png" Text=" Budget Settings" Height="23" ButtonBase.Click="fmsSettings_Click">
+            <my:FMSImageButton.BorderBrush>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+            </my:FMSImageButton.BorderBrush>
+            <my:FMSImageButton.Foreground>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+            </my:FMSImageButton.Foreground>
+            <my:FMSImageButton.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </my:FMSImageButton.Background>
+        </my:FMSImageButton>
+    </Grid>
+</UserControl>

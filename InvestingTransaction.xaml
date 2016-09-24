@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="FMS.InvestingTransaction"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="681" BorderThickness="0">
+    <UserControl.Resources>
+        <DataTemplate x:Key="BlueHeader">
+            <StackPanel Orientation="Horizontal" Margin="-5,-5,-5,-5" Width="Auto">
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF223B84" Offset="1"/>
+                        <GradientStop Color="#FF57A0F4" Offset="0.5"/>
+                        <GradientStop Color="#FF4B94EC" Offset="0.5"/>
+                        
+                    </LinearGradientBrush>
+                </StackPanel.Background>               
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Background" Value="LightBlue" >
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        
+        <ListView Margin="0,0,0,0" Name="TransactionInformation" Background="White" SelectionMode="Extended" MouseDoubleClick="ListView_MouseDoubleClick" HorizontalContentAlignment="Center">
+            <ListView.BorderBrush>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </ListView.BorderBrush>
+            <ListView.Foreground>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+            </ListView.Foreground>
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="Date" Width="100"   DisplayMemberBinding="{Binding Date}" />
+                    <GridViewColumn Header="Symbol" Width="150" DisplayMemberBinding="{Binding Symbol}" />
+                    <GridViewColumn Header="No of Shares" Width="100" DisplayMemberBinding="{Binding NoOfShares}" />
+                    <GridViewColumn Header="Comments" Width="150" DisplayMemberBinding="{Binding Comments}" />
+                    <GridViewColumn Header="Share Value" Width="150" DisplayMemberBinding="{Binding ShareValue}" />
+                    <GridViewColumn Header="Total Amount" Width="100" DisplayMemberBinding="{Binding Total}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

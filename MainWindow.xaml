@@ -1,0 +1,460 @@
+﻿<Window x:Class="FMS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:FMS"
+        xmlns:c="clr-namespace:FMS.PieChart"
+        xmlns:b="clr-namespace:FMS.PieChart.Shapes"
+        xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic" 
+        
+        Title="Financial Management Software" Height="Auto" Width="Auto" WindowStyle="None" AllowsTransparency="True" FontFamily="Trebuchet MS" FontSize="16" BorderThickness="1" Icon="/FMS;component/FSM.ico" DataContext="{Binding}">
+    <Window.Resources>
+        <SolidColorBrush x:Key="OutlookButtonForeground" Color="#FF204D89"/>
+
+        <LinearGradientBrush x:Key="OutlookButtonBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFD9EDFF" Offset="0"/>
+            <GradientStop Color="#FFC0DEFF" Offset="0.445"/>
+            <GradientStop Color="#FFC0D9FB" Offset="1"/>
+            <GradientStop Color="#FFAFD1F8" Offset="0.53"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="OutlookButtonHighlight" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFFFBD69" Offset="0"/>
+            <GradientStop Color="#FFFFB75A" Offset="0.0967"/>
+            <GradientStop Color="#FFFFB14C" Offset="0.2580"/>
+            <GradientStop Color="#FFFB8C3C" Offset="0.3870"/>
+            <GradientStop Color="#FFFEB461" Offset="0.9677"/>
+            <GradientStop Color="#FFFEBB67" Offset="1"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="OutlookTabControlStyle" TargetType="{x:Type TabControl}">
+            <Setter Property="Foreground" Value="{DynamicResource OutlookButtonForeground}"/>
+            <Setter Property="Background" Value="{DynamicResource OutlookButtonBackground}"/>
+            <Setter Property="BorderBrush" Value="{x:Static Microsoft_Windows_Themes:ClassicBorderDecorator.ClassicBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="MinWidth" Value="10"/>
+            <Setter Property="MinHeight" Value="10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid ClipToBounds="true" SnapsToDevicePixels="true"
+                      KeyboardNavigation.TabNavigation="Local">
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+                                <RowDefinition x:Name="RowDefinition1" Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="ColumnDefinition0"/>
+                                <ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid x:Name="ContentPanel" Grid.Column="0" Grid.Row="1"
+                        KeyboardNavigation.DirectionalNavigation="Contained"
+                        KeyboardNavigation.TabIndex="2"
+                        KeyboardNavigation.TabNavigation="Local">
+                                <Microsoft_Windows_Themes:ClassicBorderDecorator
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderStyle="Raised"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter SnapsToDevicePixels=
+                            "{TemplateBinding SnapsToDevicePixels}" Margin="2,2,2,2"
+                            x:Name="PART_SelectedContentHost"
+                            ContentSource="SelectedContent"/>
+                                </Microsoft_Windows_Themes:ClassicBorderDecorator>
+                            </Grid>
+                            <StackPanel HorizontalAlignment="Stretch" Margin="0,-2,0,0"
+                    x:Name="HeaderPanel" VerticalAlignment="Bottom" Width="Auto" 
+                Height="Auto" Grid.Row="1" IsItemsHost="True"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TabStripPlacement" Value="Bottom">
+                                <Setter Property="Grid.Row"
+                        TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Height"
+                            TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height"
+                            TargetName="RowDefinition1" Value="Auto"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Left">
+                                <Setter Property="Grid.Row"
+                            TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Grid.Column"
+                            TargetName="ContentPanel" Value="1"/>
+                                <Setter Property="Width"
+                            TargetName="ColumnDefinition0" Value="Auto"/>
+                                <Setter Property="Width"
+                            TargetName="ColumnDefinition1" Value="*"/>
+                                <Setter Property="Height"
+                            TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height"
+                            TargetName="RowDefinition1" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Right">
+                                <Setter Property="Grid.Row"
+                            TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Grid.Column"
+                            TargetName="ContentPanel" Value="0"/>
+                                <Setter Property="Width"
+                            TargetName="ColumnDefinition0" Value="*"/>
+                                <Setter Property="Width"
+                            TargetName="ColumnDefinition1" Value="Auto"/>
+                                <Setter Property="Height"
+                            TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height"
+                            TargetName="RowDefinition1" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground"
+                            Value="{DynamicResource
+                            {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="OutlookTabItemStyle" TargetType="{x:Type TabItem}">
+            <Setter Property="Padding" Value="12,2,12,2"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border SnapsToDevicePixels="true" x:Name="Bd"
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="1" BorderBrush="#FF6593CF">
+                            <ContentPresenter SnapsToDevicePixels=
+                        "{TemplateBinding SnapsToDevicePixels}"
+                        Margin="{TemplateBinding Padding}"
+                VerticalAlignment="{Binding Path=VerticalContentAlignment,
+                RelativeSource={RelativeSource AncestorType=
+                        {x:Type ItemsControl}}}"
+                ContentSource="Header" RecognizesAccessKey="True"
+                            HorizontalAlignment="Left"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Selector.IsSelected" Value="True">
+                                <Setter Property="Background" TargetName="Bd"
+                Value="{DynamicResource OutlookButtonHighlight}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <x:ArrayExtension Type="{x:Type Brush}" x:Key="brushes">
+                <ImageBrush ImageSource="/FMS;component/PieChart/Images/GraphColor1.png"/>
+                <ImageBrush ImageSource="/FMS;component/PieChart/Images/GraphColor2.png"/>
+                <ImageBrush ImageSource="/FMS;component/PieChart/Images/GraphColor3.png"/>
+                <ImageBrush ImageSource="/FMS;component/PieChart/Images/GraphColor4.png"/>
+                <SolidColorBrush Color="#818183"/>
+                <SolidColorBrush Color="#000033"/>
+            </x:ArrayExtension>
+
+        </Window.Resources>
+    
+    <Grid Name="Main" Focusable="False" Visibility="Visible" Cursor="Arrow" Margin="2,0,2,35" Background="White">
+        
+        <Grid.Resources>
+            <ImageBrush x:Key="Close_inact" ImageSource="UI_RES\Close_inact.png" />
+            <ImageBrush x:Key="Min_inact" ImageSource="UI_RES\Minus_inact.png" />
+            <ImageBrush x:Key="Max_inact" ImageSource="UI_RES\Plus_inact.png" />
+            <ImageBrush x:Key="Close_act" ImageSource="UI_RES\Close_act.png" />
+            <ImageBrush x:Key="Min_act" ImageSource="UI_RES\Minus_act.png" />
+            <ImageBrush x:Key="Max_act" ImageSource="UI_RES\Plus_act.png" />
+            <ImageBrush x:Key="Close_pr" ImageSource="UI_RES\Close_pr.png" />
+            <ImageBrush x:Key="Min_pr" ImageSource="UI_RES\Minus_pr.png" />
+            <ImageBrush x:Key="Max_pr" ImageSource="UI_RES\Plus_pr.png" />
+        </Grid.Resources>
+        <Rectangle Height="31" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" MouseDown="move_window">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="UI_RES\Title_top_middle.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Margin="8,4,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Width="56" Height="15" Fill="Transparent"
+                   MouseEnter="Activate_Title_Icons" MouseLeave="Deactivate_Title_Icons" />
+        <Ellipse Margin="0,7,19,0" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                 Width="14" Height="15" MouseLeftButtonUp="EXIT" 
+                 MouseEnter="Activate_Title_Icons" MouseLeave="Deactivate_Title_Icons" 
+                 MouseLeftButtonDown="Close_pressing" Name="Close_btn" 
+                 Fill="{DynamicResource Close_inact}" />
+        <Ellipse Margin="0,7,60,0" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                 Width="14" Height="15" MouseLeftButtonUp="MINIMIZE" 
+                 MouseEnter="Activate_Title_Icons" MouseLeave="Deactivate_Title_Icons" 
+                 MouseLeftButtonDown="Min_pressing" Name="Min_btn" 
+                 Fill="{StaticResource Min_inact}" />
+        <Ellipse Margin="0,7,39,0" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                 Width="14" Height="15" MouseLeftButtonUp="MAX_RESTORE" 
+                 MouseEnter="Activate_Title_Icons" MouseLeave="Deactivate_Title_Icons" 
+                 MouseLeftButtonDown="Max_pressing" Name="Max_btn" 
+                 Fill="{StaticResource Max_inact}" FlowDirection="LeftToRight" />
+        <Label Content="Financial Management Software" Height="28" HorizontalAlignment="Center" Margin="134,0,129,0" Name="label1" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" Width="240" FontFamily="Trebuchet MS" Foreground="White"></Label>
+        <Menu Height="23" HorizontalAlignment="Stretch" Margin="0,28,0,0" Name="menu1" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontFamily="Trebuchet MS" FontSize="12">
+            <Menu.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </Menu.Background>
+        </Menu>
+        <TabControl Height="81" HorizontalAlignment="Stretch" Margin="0,27,0,0" Name="tabControl1" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" FontFamily="Trebuchet MS" Opacity="2">
+            <TabControl.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </TabControl.Background>
+            <TabItem Header="Home" Name="homemenu" FontFamily="Trebuchet MS" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </TabItem.Background>
+                <my:HomeMenu x:Name="homeMenu1" VerticalAlignment="Top" VerticalContentAlignment="Top" HorizontalAlignment="Left"  />
+            </TabItem>
+            <TabItem Header="Tools" Name="tabItem1" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </TabItem.Background>
+                <Grid />
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+            </TabItem>
+            <TabItem Header="Settings" Name="tbSettings" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </TabItem.Background>
+                
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <my:SettingsMenu x:Name="SettingsMenu1" VerticalAlignment="Top" VerticalContentAlignment="Top" HorizontalAlignment="Left"  />
+            </TabItem>
+        </TabControl>
+      
+        <StatusBar Height="23" HorizontalAlignment="Stretch" Name="statusBar1" VerticalAlignment="Bottom" FontFamily="Trebuchet MS" FontSize="16">
+            <StatusBar.Foreground>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+            </StatusBar.Foreground>
+            <StatusBar.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </StatusBar.Background>
+        </StatusBar>
+        <Grid HorizontalAlignment="Left" Margin="0,108,0,22" Name="grid1" VerticalAlignment="Stretch" Width="292">
+            <TextBlock Height="23" HorizontalAlignment="Left" Name="textBlock1" Text="         Accounts..." VerticalAlignment="Top" Width="292" FontStretch="Normal" TextAlignment="Left"><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground><TextBlock.Background><ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" /></TextBlock.Background></TextBlock>
+            <TreeView Margin="0,23,0,22" BorderThickness="2" Background="White" Name="tvAccountDetails">
+                <TreeView.BorderBrush>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </TreeView.BorderBrush>
+                <TreeView.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </TreeView.Foreground>               
+            </TreeView>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="292">
+                
+                <TextBlock Height="23" Name="tblkNetWorth" Text=" Net Worth : 0.00" Margin="25,0,0,0" TextAlignment="Justify"><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground><TextBlock.Background><ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" /></TextBlock.Background></TextBlock>
+            </StackPanel>
+            <Grid.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </Grid.Background>
+        </Grid>
+        <Menu Height="24" HorizontalAlignment="Stretch" Margin="290,108,0,0" Name="menu2" VerticalAlignment="Top" Width="Auto">
+            <Menu.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </Menu.Background>
+            <Menu.Foreground>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+            </Menu.Foreground>
+        </Menu>
+        <TabControl Height="Auto" HorizontalAlignment="Stretch" Margin="290,106,0,24" Name="tabControl2" VerticalAlignment="Stretch">
+            <TabControl.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </TabControl.Background>
+            <TabItem Header="Home" Name="homeView" FontFamily="Trebuchet MS" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/PageBackground.png" />
+                </TabItem.Background>
+                
+                <Grid>
+                    <ScrollViewer x:Name="svBtn" Grid.Row="1" Margin="0" HorizontalAlignment="Stretch" 
+                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="grid2" VerticalAlignment="Top">
+                    <Grid.Background>
+                        <SolidColorBrush />
+                    </Grid.Background>
+                       
+                            <StackPanel Orientation="Vertical" Margin="0,0,-156,6">
+                                <StackPanel.Background>
+                                    <SolidColorBrush />
+                                </StackPanel.Background>
+                                <c:PieChartLayout HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"
+                              x:Name="piePlotter" PlottedProperty="Data" Margin="0" Width="Auto" >
+                                    <c:PieChartLayout.ColorSelector>
+                                        <c:IndexedBrushSelector Brushes="{StaticResource brushes}"/>
+                                    </c:PieChartLayout.ColorSelector>
+                                </c:PieChartLayout>
+                            </StackPanel>
+                            <my:FMSImageButton x:Name="fMSImageButton3" Width="63" Margin="5,231,0,-51" Height="40" BorderThickness="1" Image="/FMS;component/UI_RES/AddAccount.png" ButtonBase.Click="OnAddTransactionClick">
+                                <my:FMSImageButton.BorderBrush>
+                                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                                </my:FMSImageButton.BorderBrush>
+                                <my:FMSImageButton.Background>
+                                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                                </my:FMSImageButton.Background>
+                            </my:FMSImageButton>
+                            <DatePicker x:Name="dpStartDate" Width="129" Margin="-600,231,0,-51" Height="23" BorderThickness="1" >
+                            </DatePicker>
+                            <DatePicker x:Name="dpEndDate" Width="129" Margin="-300,231,0,-51" Height="23" BorderThickness="1" >
+                            </DatePicker>
+                        </Grid>
+                         </ScrollViewer>
+                <my:TransactionList HorizontalAlignment="Stretch" Margin="0,280,0,23" x:Name="tlAllTransactions" VerticalAlignment="Stretch" Height="Auto" BorderThickness="2">
+                    <my:TransactionList.BorderBrush>
+                        <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                    </my:TransactionList.BorderBrush>
+                </my:TransactionList>
+                  
+                </Grid>
+            </TabItem>
+            <TabItem Header="Expenditure" Name="ExpenditureView" FontFamily="Trebuchet MS" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/PageBackground.png" />
+                </TabItem.Background>
+                <Grid>
+                    <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="grid3" VerticalAlignment="Top" Width="Auto">
+                        <Grid.Background>
+                            <SolidColorBrush />
+                        </Grid.Background>
+
+                        <StackPanel Orientation="Vertical" Margin="0,0,-156,6">
+                            <StackPanel.Background>
+                                <SolidColorBrush />
+                            </StackPanel.Background>
+                            <c:ExpenditureGraph HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"
+                              x:Name="pieExp" PlottedProperty="Data" Margin="0" Width="Auto" >
+                                <c:ExpenditureGraph.ColorSelector>
+                                    <c:IndexedBrushSelector Brushes="{StaticResource brushes}"/>
+                                </c:ExpenditureGraph.ColorSelector>
+                            </c:ExpenditureGraph>
+                        </StackPanel>
+
+                    </Grid>
+                    <my:TransactionList HorizontalAlignment="Stretch" Margin="0,240,0,23" x:Name="tlexpTransactionList" VerticalAlignment="Stretch" Height="Auto" BorderThickness="2" Visibility="Visible">
+                        <my:TransactionList.BorderBrush>
+                            <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                        </my:TransactionList.BorderBrush>
+                    </my:TransactionList>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Bills" Name="BillsView" FontFamily="Trebuchet MS" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/PageBackground.png" />
+                </TabItem.Background>
+                <Grid>
+                    <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="grid4" VerticalAlignment="Top" Width="Auto">
+                        <Grid.Background>
+                            <SolidColorBrush />
+                        </Grid.Background>
+                       
+                    </Grid>
+                    <my:TransactionList HorizontalAlignment="Stretch" Margin="0,240,0,23" x:Name="transactionList2" VerticalAlignment="Stretch" Height="Auto" BorderThickness="2">
+                        <my:TransactionList.BorderBrush>
+                            <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                        </my:TransactionList.BorderBrush>
+                    </my:TransactionList>
+                    <my:FMSImageButton HorizontalAlignment="Left" Margin="13,206,0,0" x:Name="fMSImageButton1" VerticalAlignment="Top" Width="119" Text="Add Bill" Height="28">
+                        <my:FMSImageButton.Background>
+                            <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                        </my:FMSImageButton.Background>
+                    </my:FMSImageButton>
+                    <my:FMSImageButton Height="28" HorizontalAlignment="Left" Margin="155,206,0,0" x:Name="fMSImageButton2" Text="Delete Bill" VerticalAlignment="Top" Width="119">
+                        <my:FMSImageButton.Background>
+                            <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                        </my:FMSImageButton.Background>
+                    </my:FMSImageButton>
+                    <GroupBox Header="Upcoming Bills" Height="195" HorizontalAlignment="Stretch" Margin="6,6,0,0" Name="groupBox1" VerticalAlignment="Top" Width="Auto">
+                        <Grid />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Budget" Name="BudgetView" FontFamily="Trebuchet MS" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/PageBackground.png" />
+                </TabItem.Background>
+                <Grid>
+                    <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="grid5" VerticalAlignment="Top" Width="Auto">
+                        <Grid.Background>
+                            <SolidColorBrush />
+                        </Grid.Background>
+
+                    </Grid>
+                    <my:SpendingTrackerCtrl HorizontalAlignment="Left" Margin="6,6,0,0" x:Name="sptVehicle" VerticalAlignment="Top" Height="250" Width="250" />
+                    <my:SpendingTrackerCtrl Height="250" Width="250" HorizontalAlignment="Left" Margin="276,6,0,0" x:Name="sptDonations" VerticalAlignment="Top" />
+                    <my:SpendingTrackerCtrl Height="250" Width="250" HorizontalAlignment="Left" Margin="546,6,0,0" x:Name="sptFamilyunit" VerticalAlignment="Top" />
+                    <my:SpendingTrackerCtrl Height="250" Width="250" HorizontalAlignment="Left" Margin="816,6,0,0" x:Name="sptOfferings" VerticalAlignment="Top" />
+                    <my:SpendingTrackerCtrl Height="250" Width="250" HorizontalAlignment="Left" Margin="6,306,0,0" x:Name="sptLearning" VerticalAlignment="Top" />
+                    <my:SpendingTrackerCtrl Height="250" Width="250" HorizontalAlignment="Left" Margin="276,306,0,0" x:Name="sptFood" VerticalAlignment="Top" />
+                    <my:SpendingTrackerCtrl Height="250" Width="250" HorizontalAlignment="Left" Margin="546,306,0,0" x:Name="sptHomebelongings" VerticalAlignment="Top" />
+                    <my:SpendingTrackerCtrl Height="250" Width="250" HorizontalAlignment="Left" Margin="816,306,0,0" x:Name="sptMedical" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Investing" Name="InvestingView" FontFamily="Trebuchet MS" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/PageBackground.png" />
+                </TabItem.Background>
+                <Grid>
+                    <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="grid6" VerticalAlignment="Top" Width="Auto">
+                        <Grid.Background>
+                            <SolidColorBrush />
+                        </Grid.Background>
+
+                    </Grid>
+                    <my:TradingEntry HorizontalAlignment="Left" Margin="6,6,0,0" x:Name="cTradingEntry" VerticalAlignment="Top" Height="250" Width="450" />
+                    <my:InvestingTransaction HorizontalAlignment="Stretch" Margin="0,280,0,23" x:Name="tlInvesting" VerticalAlignment="Stretch" Height="Auto" BorderThickness="2">
+                        <my:InvestingTransaction.BorderBrush>
+                            <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                        </my:InvestingTransaction.BorderBrush>
+                    </my:InvestingTransaction>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Other earnings" Name="OtherEarningsView" FontFamily="Trebuchet MS" FontSize="14" Style="{StaticResource OutlookTabItemStyle}">
+                <TabItem.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </TabItem.Foreground>
+                <TabItem.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/PageBackground.png" />
+                </TabItem.Background>
+                <Grid>
+                    <Grid Height="Auto" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="grid7" VerticalAlignment="Top" Width="Auto">
+                        <Grid.Background>
+                            <SolidColorBrush />
+                        </Grid.Background>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+    <Window.Background>
+        <SolidColorBrush />
+    </Window.Background>
+</Window>

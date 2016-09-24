@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="FMS.PieChart.PieChartLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:c="clr-namespace:FMS.PieChart"
+             mc:Ignorable="d" 
+             d:DesignHeight="209" d:DesignWidth="1157" xmlns:my="clr-namespace:FMS" FontFamily="Trebuchet MS" FontSize="14">
+    <Grid Width="1139" Height="214">
+        <StackPanel Orientation="Horizontal" Margin="0,0,-198,0">
+            <c:PiePlotter x:Name="pPOutFlowGraph"    Margin="10" Height="192" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" 
+                      HoleSize="0.55"  />
+            <c:PiePlotter  x:Name="pPInFlow" Height="192" HoleSize="0.55" Width="196" Margin="206,0,0,0" />
+        </StackPanel>
+        <Grid Margin="230,11,739,11" >
+            <Grid.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </Grid.Background>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="170" Margin="0,0,0,95">
+                <StackPanel.Background>
+                    <SolidColorBrush />
+                </StackPanel.Background>
+                
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="40,0,0,0" Name="tbxOutflow" Text="00.00" VerticalAlignment="bottom" FontFamily="Trebuchet MS" TextAlignment="Left" Width="Auto"><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground></TextBlock>
+            </StackPanel>
+            
+            <my:FMSImageButton HorizontalAlignment="Stretch" Margin="0,162,0,0" x:Name="fMSImageButton1" VerticalAlignment="Stretch" BorderThickness="1" Image="/FMS;component/UI_RES/more-details.png" Text=" More Details">
+                <my:FMSImageButton.BorderBrush>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </my:FMSImageButton.BorderBrush>
+                <my:FMSImageButton.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </my:FMSImageButton.Foreground>
+                <my:FMSImageButton.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </my:FMSImageButton.Background>
+            </my:FMSImageButton>
+            <RichTextBox Height="59" HorizontalAlignment="Stretch" Margin="1,97,0,0" Name="rtbExpensesInfo" VerticalAlignment="Top" Width="174" FontFamily="Trebuchet MS" HorizontalContentAlignment="Center" FontSize="10" VerticalContentAlignment="Center" Focusable="False" IsEnabled="False" IsHitTestVisible="False" IsReadOnly="True" FontStyle="Italic" FontWeight="Light">
+                <RichTextBox.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </RichTextBox.Foreground>
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0" />
+                    </Style>
+                </RichTextBox.Resources>
+                <RichTextBox.Background>
+                    <ImageBrush />
+                </RichTextBox.Background>
+                <RichTextBox.BorderBrush>
+                    <SolidColorBrush />
+                </RichTextBox.BorderBrush>
+                
+            </RichTextBox>
+            <TextBlock Height="23" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="tbxOutFlow" Text="Total Outflow" VerticalAlignment="Top" FontFamily="Trebuchet MS" FontSize="16" Foreground="White" TextWrapping="Wrap" TextAlignment="Center"><TextBlock.Background><ImageBrush ImageSource="/FMS;component/UI_RES/SubTitle.png" /></TextBlock.Background></TextBlock>
+            <Border BorderThickness="1" HorizontalAlignment="Stretch" Name="border1" VerticalAlignment="Stretch">
+                <Border.BorderBrush>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </Border.BorderBrush>
+            </Border>
+        </Grid>
+        <Grid Margin="641,11,0,11" HorizontalAlignment="Left" Width="171">
+            <Grid.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </Grid.Background>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="170" Margin="0,0,0,95">
+                <StackPanel.Background>
+                    <SolidColorBrush />
+                </StackPanel.Background>
+                
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="40,0,0,0" Name="tbxInflow" Text="00.00" VerticalAlignment="bottom" FontFamily="Trebuchet MS" TextAlignment="Left" Width="Auto"><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground></TextBlock>
+            </StackPanel>
+            
+            <my:FMSImageButton HorizontalAlignment="Stretch" Margin="0,162,0,0" x:Name="fMSImageButton2" VerticalAlignment="Stretch" BorderThickness="1" Image="/FMS;component/UI_RES/more-details.png" Text=" More Details">
+                <my:FMSImageButton.BorderBrush>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </my:FMSImageButton.BorderBrush>
+                <my:FMSImageButton.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </my:FMSImageButton.Foreground>
+                <my:FMSImageButton.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </my:FMSImageButton.Background>
+            </my:FMSImageButton>
+            <RichTextBox Height="59" HorizontalAlignment="Stretch" Margin="1,97,0,0" Name="rtbIncomeInfo" VerticalAlignment="Top" Width="174" FontFamily="Trebuchet MS" HorizontalContentAlignment="Center" FontSize="10" VerticalContentAlignment="Center" Focusable="False" IsEnabled="False" IsHitTestVisible="False" IsReadOnly="True" FontStyle="Italic" FontWeight="Light">
+                <RichTextBox.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </RichTextBox.Foreground>
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0" />
+                    </Style>
+                </RichTextBox.Resources>
+                <RichTextBox.Background>
+                    <ImageBrush />
+                </RichTextBox.Background>
+                <RichTextBox.BorderBrush>
+                    <SolidColorBrush />
+                </RichTextBox.BorderBrush>
+
+            </RichTextBox>
+            <TextBlock Height="23" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="textBlock4" Text="Total Income" VerticalAlignment="Top" FontFamily="Trebuchet MS" FontSize="16" Foreground="White" TextWrapping="Wrap" TextAlignment="Center"><TextBlock.Background><ImageBrush ImageSource="/FMS;component/UI_RES/SubTitle.png" /></TextBlock.Background></TextBlock>
+            <Border BorderThickness="1" HorizontalAlignment="Stretch" Name="border2" VerticalAlignment="Stretch">
+                <Border.BorderBrush>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </Border.BorderBrush>
+            </Border>
+        </Grid>
+        <Grid Margin="825,11,0,11" HorizontalAlignment="Left" Width="171">
+            <Grid.Background>
+                <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+            </Grid.Background>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="170" Margin="0,0,0,95">
+                <StackPanel.Background>
+                    <SolidColorBrush />
+                </StackPanel.Background>
+                
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="40,0,0,0" Name="tbxBalance" Text="00.00" VerticalAlignment="bottom" FontFamily="Trebuchet MS" TextAlignment="Left" Width="Auto"><TextBlock.Foreground><ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" /></TextBlock.Foreground></TextBlock>
+            </StackPanel>
+            
+            <my:FMSImageButton HorizontalAlignment="Stretch" Margin="0,162,0,0" x:Name="fMSImageButton3" VerticalAlignment="Stretch" BorderThickness="1" Image="/FMS;component/UI_RES/more-details.png" Text=" More Details">
+                <my:FMSImageButton.BorderBrush>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </my:FMSImageButton.BorderBrush>
+                <my:FMSImageButton.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </my:FMSImageButton.Foreground>
+                <my:FMSImageButton.Background>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/ButtonBackground.png" />
+                </my:FMSImageButton.Background>
+            </my:FMSImageButton>
+            <RichTextBox Height="59" HorizontalAlignment="Stretch" Margin="1,97,0,0" Name="rtbBalanceInfo" VerticalAlignment="Top" Width="174" FontFamily="Trebuchet MS" HorizontalContentAlignment="Center" FontSize="10" VerticalContentAlignment="Center" Focusable="False" IsEnabled="False" IsHitTestVisible="False" IsReadOnly="True" FontStyle="Italic" FontWeight="Light">
+                <RichTextBox.Foreground>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </RichTextBox.Foreground>
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0" />
+                    </Style>
+                </RichTextBox.Resources>
+                <RichTextBox.Background>
+                    <ImageBrush />
+                </RichTextBox.Background>
+                <RichTextBox.BorderBrush>
+                    <SolidColorBrush />
+                </RichTextBox.BorderBrush>
+
+            </RichTextBox>
+            <TextBlock Height="23" HorizontalAlignment="Stretch" Margin="0,0,0,0" Name="textBlock6" Text="Balance" VerticalAlignment="Top" FontFamily="Trebuchet MS" FontSize="16" Foreground="White" TextWrapping="Wrap" TextAlignment="Center"><TextBlock.Background><ImageBrush ImageSource="/FMS;component/UI_RES/SubTitle.png" /></TextBlock.Background></TextBlock>
+            <Border BorderThickness="1" HorizontalAlignment="Stretch" Name="border3" VerticalAlignment="Stretch">
+                <Border.BorderBrush>
+                    <ImageBrush ImageSource="/FMS;component/UI_RES/FontColor.png" />
+                </Border.BorderBrush>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

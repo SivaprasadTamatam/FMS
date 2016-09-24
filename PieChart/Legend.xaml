@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="FMS.PieChart.Legend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:c="clr-namespace:FMS.PieChart"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             mc:Ignorable="d" 
+             
+             d:DesignHeight="205" d:DesignWidth="300" DataContext="{Binding}">
+    <UserControl.Resources>
+        <c:LegendConverter x:Key="legendConverter" />
+        <c:CBrushConvertor x:Key="colourConverter" />
+
+        <Style TargetType="ListBoxItem">
+            <!-- override the default template to remove the default styling on the IsSelected property -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="border" BorderBrush="Transparent" BorderThickness="1">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#FF0000E0"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Height="170">
+        <StackPanel Orientation="Vertical" Margin="0,0,0,0"></StackPanel>
+    </Grid>
+</UserControl>
